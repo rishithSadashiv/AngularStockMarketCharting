@@ -1,0 +1,17 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
+  <div class="navbar-nav" *ngIf="token.getIsAuthenticated() else login">
+    <a class="nav-item nav-link" routerLink="/user-page">Home</a>
+      <a class="nav-item nav-link" routerLink="/ipo-page">Ipos</a>
+      <a class="nav-item nav-link" routerLink="/compare-companies">Compare Company</a>
+      <a class="nav-item nav-link" routerLink="/compare-sectors"> Compare Sectors</a>
+      <a class="nav-item nav-link" routerLink="/other-options"> Others</a>
+     <a class="nav-item nav-link" href="#" (click)="logout();">Logout</a>
+  </div>
+  
+  <ng-template #login>
+      <div class="navbar-nav">
+          <a class="nav-item nav-link" routerLink="/login"> Login</a>
+      </div>
+  </ng-template>
+
+</nav>
