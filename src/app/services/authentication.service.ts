@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/Entities/User';
+import { GatewayUrls } from './gatewayurls';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  
-  loginUrl:string = "http://localhost:53595/api/userservice/auth/login";
-  registerUrl:string = "http://localhost:53595/api/userservice/auth/register"; 
+  private urls = new GatewayUrls();
   constructor(private http: HttpClient) { }
 
   authenticate(username:string, password:string){
@@ -16,11 +16,11 @@ export class AuthenticationService {
       username:username,
       password:password
     }
-    return this.http.post(this.loginUrl, obj);
+    return this.http.post(this.urls.LoginEndpoint, obj);
   }
 
   register(user:User){
-    return this.http.post(this.registerUrl, user)
+    return this.http.post(this.urls.RegisterEndpoint, user)
   }
 
 }

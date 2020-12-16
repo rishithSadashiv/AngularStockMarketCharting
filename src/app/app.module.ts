@@ -11,11 +11,12 @@ import { CompanyService } from 'src/app/services/company.service';
 import { UploadService } from 'src/app/services/upload.service';
 import { SectorService } from 'src/app/services/sector.service';
 import { StockexchangeService } from 'src/app/services/stockexchange.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { JwtTokenService } from 'src/app/services/jwt-token.service';
 import { RegisterComponent } from './components/register/register.component';
+import { AppendAuthTokenInterceptor } from 'src/app/interceptors/append-auth-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,12 @@ import { RegisterComponent } from './components/register/register.component';
     UploadService,
     StockexchangeService,
     AuthenticationService,
-    JwtTokenService
+    JwtTokenService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppendAuthTokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
