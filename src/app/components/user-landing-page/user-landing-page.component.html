@@ -2,8 +2,7 @@
   <div class="navbar-nav" *ngIf="token.getIsAuthenticated() else login">
     <a class="nav-item nav-link" routerLink="/user-page">Home</a>
       <a class="nav-item nav-link" routerLink="/check-ipo">Ipos</a>
-      <a class="nav-item nav-link" routerLink="/compare-companies">Compare Company</a>
-      <a class="nav-item nav-link" routerLink="/compare-sectors"> Compare Sectors</a>
+      <a class="nav-item nav-link" routerLink="/compare">Compare</a>
       <a class="nav-item nav-link" [routerLink]="['/update-user', userId]"> Update Profile</a>
      <a class="nav-item nav-link" href="#" (click)="logout();">Logout</a>
      <p>Hello {{user}}!</p>

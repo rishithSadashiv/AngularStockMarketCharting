@@ -87,17 +87,21 @@ export class CompanyService {
   }
 
   GetAllStockPricesOfCompanyBetweenDates(name:string, fromDate:Date, toDate:Date){
-    return this.http.get(this.urls.stockpriceEndpoint+ 'stockPrices' +'?name='
+    console.log(this.urls.stockpriceEndpoint + '/' + 'stockPrices' +'?name='
+    + name + '&fromDate='
+    + fromDate 
+    + '&toDate=' + toDate)
+    return this.http.get(this.urls.stockpriceEndpoint + '/' + 'stockPrices' +'?name='
                                     + name + '&fromDate='
-                                    + String(fromDate) 
-                                    + '&toDate=' + String(toDate));
+                                    + fromDate 
+                                    + '&toDate=' + toDate);
 
   }
 
   GetAllStockPricesOfAllCompaniesBetweenDates(fromDate:Date, toDate:Date){
-    return this.http.get(this.urls.stockpriceEndpoint+ 'stockPrices' +'?fromDate='
-                                    + String(fromDate) 
-                                    + '&toDate=' + String(toDate));
+    return this.http.get(this.urls.stockpriceEndpoint+ '/' + 'stockPrices' +'?fromDate='
+                                    + fromDate 
+                                    + '&toDate=' + toDate);
 
   }
 

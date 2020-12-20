@@ -18,6 +18,7 @@ import { EditIpoComponent } from 'src/app/components/edit-ipo/edit-ipo.component
 import { AddIpoComponent } from './components/add-ipo/add-ipo.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { CheckIpoComponent } from './components/check-ipo/check-ipo.component';
+import { CompareComponent } from './components/compare/compare.component';
  
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   {component: AddIpoComponent, path:'add-ipo', canActivate:[OnlyAdminUsersGuard]},
   {component: UpdateUserComponent, path:'update-user/:userId', canActivate:[OnlyAuthenticatedUsersGuard]},
   {component: CheckIpoComponent, path:'check-ipo', canActivate:[OnlyAuthenticatedUsersGuard]},
+  {component: CompareComponent, path:'compare', canActivate:[OnlyAuthenticatedUsersGuard]},
   {path:"", redirectTo: "login", pathMatch: "full" }
 ];
 
