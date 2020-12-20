@@ -14,7 +14,7 @@ export class OnlyAuthenticatedUsersGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    if(this.token.isAuthenticated){
+    if(this.token.getIsAuthenticated() && this.token.getUserType() == 'user'){
       return true;
     }else{
       this.token.resetToken();

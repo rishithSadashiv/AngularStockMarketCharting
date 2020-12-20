@@ -10,7 +10,6 @@ import { Stockprice } from 'src/app/Entities/stockprice';
 })
 export class CompanyService {
 
-  
   private urls = new GatewayUrls();
   constructor(private http:HttpClient) { }
 
@@ -23,7 +22,7 @@ export class CompanyService {
   }
 
   DeleteCompany(id:number){
-    return this.http.delete(this.urls.CompanyEndpoint1 + '/' + String(id));
+    return this.http.delete(this.urls.CompanyEndpoint1 + '/' + id.toString());
   }
 
   GetAllCompanies(){
@@ -55,6 +54,10 @@ export class CompanyService {
 
   GetAllIpos(){
     return this.http.get(this.urls.IpoEndpoint);
+  }
+
+  GetIpoById(Id:number){
+    return this.http.get(this.urls.IpoEndpoint + '/' + Id.toString());
   }
 
 

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <h1>Add Company</h1>
+          <form>
+             <div class="form-group">
+                  <label>Company name</label>
+                  <input type="text" class="form-control" id="name" name="name" [(ngModel)]="company.companyName" required>
+              </div>
+              <div class="form-group">
+                  <label>Company code</label>
+                  <input type="text" class="form-control" id="code" name="code" [(ngModel)]="company.companyCode" required>
+              </div>
+              <div class="form-group">
+                <label>Stock Exchange</label>
+                <select class="form-control" id="stockexchange"  name="stockexchange" [(ngModel)]="company.stockExchangeName">
+                  <option *ngFor="let i of exchanges" value="{{i.stockExchangeName}}">{{i.stockExchangeName}}</option>
+              </select>
+              </div>
+              
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary" (click)="AddCompanyToExchange();" >Add Company</button>
+              </div>
+
+              <div>
+                <a class="nav-item nav-link" routerLink="/manage-exchanges"> Back</a> 
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+

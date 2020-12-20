@@ -1,11 +1,12 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-md">
   <div class="navbar-nav" *ngIf="token.getIsAuthenticated() else login">
     <a class="nav-item nav-link" routerLink="/user-page">Home</a>
-      <a class="nav-item nav-link" routerLink="/ipo-page">Ipos</a>
+      <a class="nav-item nav-link" routerLink="/check-ipo">Ipos</a>
       <a class="nav-item nav-link" routerLink="/compare-companies">Compare Company</a>
       <a class="nav-item nav-link" routerLink="/compare-sectors"> Compare Sectors</a>
-      <a class="nav-item nav-link" routerLink="/other-options"> Others</a>
+      <a class="nav-item nav-link" [routerLink]="['/update-user', userId]"> Update Profile</a>
      <a class="nav-item nav-link" href="#" (click)="logout();">Logout</a>
+     <p>Hello {{user}}!</p>
   </div>
   
   <ng-template #login>
@@ -13,5 +14,42 @@
           <a class="nav-item nav-link" routerLink="/login"> Login</a>
       </div>
   </ng-template>
-
+  
 </nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <h1>Search Company</h1>
+          <form>
+              <div class="form-group">
+                  <label>Search</label>
+                  <input class="form-control" id="companylist" (keyup)="filterThroughList();" name="companylist"
+                      [(ngModel)]="inputFromUser">                  
+                </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+<ul class="list-unstyled" *ngIf="loaded && companies?.length > 0">
+  <li class="card card-body mb-2" *ngFor='let company of companies' [class.bg-light]="company.active" [style.border-color]="company.active ? 'green' : ''">
+    <h4>
+      {{ company.companyName }} 
+    </h4>
+    <h5>
+      {{ company.companyCode }} 
+    </h5>
+    <ul class="list-group" >
+      <li class="list-group-item ">CEO: {{ company.ceo }}</li>
+      <li class="list-group-item ">BoD: {{ company.boardOfDirectors }}</li>
+      <li class="list-group-item ">Turnover: {{ company.turnover }}</li>
+      <li class="list-group-item ">Sector: {{ company.sector }}</li>
+      <li class="list-group-item ">Current stock price: {{ company.currentStockPrice }}</li>
+    </ul>
+</ul>
+
+<h3 *ngIf="companies?.length == 0 ">No companies found</h3>
+<h3 *ngIf="!loaded">Loading companies...</h3>
+
+

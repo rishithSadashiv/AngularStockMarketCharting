@@ -9,9 +9,11 @@ import { JwtTokenService } from 'src/app/services/jwt-token.service';
 })
 export class AdminLandingPageComponent implements OnInit {
 
+  user:string = '';
   constructor(public token: JwtTokenService, private router: Router) { }
 
   ngOnInit(): void {
+    this.user = this.token.getUsername();
   }
 
 

@@ -1,10 +1,10 @@
 export interface Ipo {
-  IpoId:number,
-  CompanyName:string,
-  StockExchange:string,
-  PricePerShare:number,
-  TotalNumberOfShares:number,
-  OpenDateTime:Date,
+  ipoId:number,
+  companyName:string,
+  stockExchange:string,
+  pricePerShare:number,
+  totalNumberOfShares:number,
+  openDateTime:Date,
   remarks:string
 
 }

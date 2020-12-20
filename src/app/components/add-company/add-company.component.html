@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <h1>Add Company</h1>
+          <form>
+             <div class="form-group">
+                  <label>Company name</label>
+                  <input type="text" class="form-control" id="name" name="name" [(ngModel)]="company.companyName" required>
+              </div>
+              <div class="form-group">
+                  <label>Company code</label>
+                  <input type="text" class="form-control" id="code" name="code" [(ngModel)]="company.companyCode" required>
+              </div>
+              <div class="form-group">
+                <label>CEO</label>
+                <input type="text" class="form-control" id="ceo" name="ceo" [(ngModel)]="company.ceo" required>
+              </div>
+              <div class="form-group">
+                <label>Turnover</label>
+                <input type="number" class="form-control" id="turnover" name="turnover" [(ngModel)]="company.turnover" required>
+              </div>
+              <div class="form-group">
+                <label>Board of Directors</label>
+                <input type="text" class="form-control" id="bod" name="bod" [(ngModel)]="company.boardOfDirectors" required>
+              </div>
+              <div class="form-group">
+                <label>Sector</label>
+                <select class="form-control" id="sector"  name="sector" [(ngModel)]="company.sector">
+                  <option *ngFor="let i of sectors" value="{{i.sectorName}}">{{i.sectorName}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Current stockPrice</label>
+                <input type="number" class="form-control" id="stockprice" name="stockprice" [(ngModel)]="company.currentStockPrice" required>
+              </div>
+
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary" (click)="addCompany();" >Add Company</button>
+              </div>
+
+              <div>
+                <a class="nav-item nav-link" routerLink="/manage-companies"> Back</a> 
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

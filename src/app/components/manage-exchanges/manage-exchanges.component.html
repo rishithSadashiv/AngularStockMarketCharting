@@ -1,0 +1,34 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
+  <a class="nav-item nav-link" routerLink="/admin-page">Home</a>
+  <a class="nav-item nav-link" routerLink="/add-exchange">Add Stock Exchange</a>
+  <a class="nav-item nav-link" routerLink="/add-company-to-exchange">Add Company To Exchange</a>
+</nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <h1>Stock Exchange List</h1>
+          <form>
+              <div class="form-group">
+                  <label>Search</label>
+                  <input class="form-control" id="exchangelist" (keyup)="filterThroughList();" name="exchangelist"
+                      [(ngModel)]="inputFromUser">                  
+                </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+<ul class="list-unstyled" *ngIf="loaded && exchanges?.length > 0">
+  <li class="card card-body mb-2" *ngFor='let exchange of exchanges' [style.border-color]="green">
+    <h4>{{ exchange.stockExchangeName }}</h4>
+    <ul class="list-group" >
+      <li class="list-group-item ">Brief: {{ exchange.brief }}</li>
+      <li class="list-group-item ">Contact Address: {{ exchange.contactAddress }}</li>
+      <li class="list-group-item ">Remarks: {{ exchange.remarks }}</li>
+    </ul>
+</ul>
+
+
+<h3 *ngIf="exchanges?.length == 0 ">No Stock Exchanges found</h3>
+<h3 *ngIf="!loaded">Loading Stock Exchanges...</h3>

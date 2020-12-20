@@ -29,6 +29,7 @@ export class UploadFilesComponent implements OnInit {
   }
 
   upload() {
+    console.log(this.data);
     this.us.upload(this.data).subscribe(
       res => { alert("Uploaded"); },
       err => { console.log(err); alert("Failed to upload"); }

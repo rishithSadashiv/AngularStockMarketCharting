@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <h1>Edit Ipo</h1>
+          <form>
+             <div class="form-group">
+                  <label>Company Name</label>
+                  <input type="text" class="form-control" id="name" name="name" [(ngModel)]="ipo.companyName" required>
+              </div>
+              <div class="form-group">
+                <label>Stock Exchange</label>
+                <select class="form-control" id="stockexchange"  name="stockexchange" [(ngModel)]="ipo.stockExchange">
+                  <option *ngFor="let i of exchanges" value="{{i.stockExchangeName}}">{{i.stockExchangeName}}</option>
+              </select>
+              </div>
+              <div class="form-group">
+                <label>Price Per Share</label>
+                <input type="number" class="form-control" id="ca" name="ca" [(ngModel)]="ipo.pricePerShare" required>
+              </div>
+              <div class="form-group">
+                <label>Total Number Of Shares</label>
+                <input type="number" class="form-control" id="remarks" name="remarks" [(ngModel)]="ipo.totalNumberOfShares" required>
+              </div>
+              <div class="form-group">
+                <label>Open Date Time</label>
+                <input type="datetime-local" class="form-control" id="remarks" name="remarks" [(ngModel)]="ipo.openDateTime " required>
+              </div>
+              <div class="form-group">
+                <label>Remarks</label>
+                <input type="text" class="form-control" id="remarks" name="remarks" [(ngModel)]="ipo.remarks" required>
+              </div>
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary" (click)="AddIpo();" >Add Ipo</button>
+              </div>
+
+              <div>
+                <a class="nav-item nav-link" routerLink="/manage-ipos"> Back</a> 
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

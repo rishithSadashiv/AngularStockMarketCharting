@@ -23,4 +23,12 @@ export class AuthenticationService {
     return this.http.post(this.urls.RegisterEndpoint, user)
   }
 
+  getUser(id:number){
+    return this.http.get(this.urls.User_Endpoint + '/' + id.toString());
+  }
+
+  updateUser(user:any){
+    return this.http.put(this.urls.User_Endpoint, user);
+  }
+
 }

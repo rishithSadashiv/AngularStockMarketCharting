@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <h1>Update User</h1>
+          <form>
+             <div class="form-group">
+                  <label>Enter username</label>
+                  <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" required>
+              </div>
+              <div class="form-group">
+                  <label>Enter password</label>
+                  <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required>
+              </div>
+              <div class="form-group">
+                <label>Enter Email</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required>
+              </div>
+              
+              <div class="form-group">
+                <label>Enter Phone number</label>
+                <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="user.phone" required>
+              </div>
+
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary" (click)="updateUser();" >Update User</button>
+              </div>
+
+              <div>
+                <a class="nav-item nav-link" routerLink="/user-page"> Back</a> 
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
