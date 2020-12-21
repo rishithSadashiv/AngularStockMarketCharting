@@ -12,9 +12,14 @@ pipeline{
         bat 'npm run ng -- build'
       }
     }
-    stage('Test'){
+    stage('Package'){
       steps{
-        bat 'npm run ng -- test'
+        bat 'npm run ng -- build --prod --base-href /angularStockExchangeCharting/'
+      }
+    }
+    stage('Deploy'){
+      steps{
+        bat 'xcopy %WORKSPACE%\\dist\\AngularStockMarketCharting\\*.* C:\\inetpub\\wwwroot /E/I/Y'
       }
     }
   }
