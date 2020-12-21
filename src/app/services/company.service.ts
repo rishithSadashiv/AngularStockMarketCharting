@@ -99,7 +99,7 @@ export class CompanyService {
   }
 
   GetAllStockPricesOfAllCompaniesBetweenDates(fromDate:Date, toDate:Date){
-    return this.http.get(this.urls.stockpriceEndpoint+ '/' + 'stockPrices' +'?fromDate='
+    return this.http.get(this.urls.stockpriceEndpoint+ '/' + 'allStockPrices' +'?fromDate='
                                     + fromDate 
                                     + '&toDate=' + toDate);
 
