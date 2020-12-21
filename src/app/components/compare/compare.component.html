@@ -18,37 +18,39 @@
             <option value='1'>Single Company</option>
             <option value='2'>Company-Company</option>
             <option value='3'>Sector-Sector</option>
-            <option value='4'>Company-Sector</option>
+            <option value='4'>Companies</option>
           </select>
         </div>
         <div class="form-group">
-          <div class="form-group">
-            <label>Entity 1</label>
+          <div class="form-group" *ngIf="selectedComparison != '4'">
+            <label *ngIf="selectedComparison == '2' || selectedComparison == '1'">Company 1</label>
+            <label *ngIf="selectedComparison == '3' " >Sector 1</label>
             <input type="text" class="form-control" id="entity1" name="entity1" [(ngModel)]="name1"/>   
           </div>
-          
+          <div class="form-group" *ngIf="selectedComparison != '1' && selectedComparison !='4'">
+            <label *ngIf="selectedComparison == '2' ">Company 2</label>
+            <label *ngIf="selectedComparison == '3' ">Sector 2</label>
+            <input type="text" class="form-control" id="entity2" name="entity2" [(ngModel)]="name2" />
+          </div>
           <div class="form-group">
-            <label>From Date 1</label>
+            <label>From Date</label>
             <input type="datetime-local" class="form-control" id="fromDate1" name="fromDate1" [(ngModel)]="fromDate1" required>
           </div>
           <div class="form-group">
-            <label>To Date 1</label>
+            <label>To Date</label>
             <input type="datetime-local" class="form-control" id="toDate1" name="toDate1" [(ngModel)]="toDate1" required>
           </div>
         </div>
         <div class="form-group">
-          <div class="form-group">
-            <label>Entity 2</label>
-            <input type="text" class="form-control" id="entity2" name="entity2" [(ngModel)]="name2" required/>
-          </div>
-          <div class="form-group">
+          
+          <!-- <div class="form-group">
             <label>From Date 2</label>
             <input type="datetime-local" class="form-control" id="fromDate2" name="fromDate2" [(ngModel)]="fromDate2" >
           </div>
           <div class="form-group">
             <label>From Date 2</label>
             <input type="datetime-local" class="form-control" id="toDate2" name="toDate2" [(ngModel)]="toDate2" >
-          </div>
+          </div> -->
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary" (click)="GenerateMap();" [disabled]="!frm.valid" >Generate Map</button>
@@ -86,7 +88,7 @@
     </div>
     <div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" (click)="Export();">Export Data</button>
+        <!-- <button type="submit" class="btn btn-primary" (click)="Export();">Export Data</button> -->
      </div>
     </div>
     </div>

@@ -78,6 +78,7 @@ export class ManageCompaniesComponent implements OnInit {
     this.companyService.DeactivateCompany(id).subscribe(res=>{
       console.log(res);
       alert("Company activated/deactivated");
+      location.reload();
     },
     err=>{
       console.log(err);

@@ -76,6 +76,8 @@ export class CompareComponent implements OnInit {
         console.log(this.list1);
 
         this.list1 = this.list1.filter(i=> i.companyName == this.name1 || i.companyName == this.name2);
+
+        console.log(this.list1);
   
         this.xAxesLabels = [...new Set(this.list1.map(d=>d.dateOfPrice))] as string[];
   
@@ -88,6 +90,9 @@ export class CompareComponent implements OnInit {
         
           const ds = {label: p, data: []};
           ds.data = this.list1.filter(i=>i.companyName===p).map(j=>j.currentPrice);
+          console.log(this.list1.filter(i=>i.companyName===p))
+          // console.log("ds.data");
+          // console.log(ds.data);
           this.dataSets.push(ds);
         }
 
@@ -109,8 +114,47 @@ export class CompareComponent implements OnInit {
       });
     }else if(this.selectedComparison == '3'){
       // for comparisons between sectors
-    }else{
-      // for comparison between company and sector
+
+      this.companyService.GetAllStockPricesOfAllCompaniesBetweenDates(this.fromDate1, this.toDate1).subscribe(data=>{
+        this.list1 = data;
+        this.list1 = this.list1.filter(i=> i.sector == this.name1 || i.sector == this.name2);
+        console.log(this.list1);
+        this.xAxesLabels = [...new Set(this.list1.map(d=>d.dateOfPrice))] as string[];
+        const productnames3 = [ this.name1, this.name2] as string[];
+        // console.log(this.xAxesLabels);
+        // console.log(productnames3);
+        for(let p of productnames3){
+          const ds = {label: p, data: []};
+          ds.data = this.list1.filter(i=>i.sector===p).map(j=>j.currentPrice);
+          this.dataSets.push(ds);
+        }
+
+        this.displayChart = true;
+        console.log(this.dataSets);
+
+
+      },err=>{
+        console.log(err);
+      });
+    }else if(this.selectedComparison == '4'){
+      // for comparison between all companies
+      this.companyService.GetAllStockPricesOfAllCompaniesBetweenDates(this.fromDate1,this.toDate1).subscribe(data=>{
+        this.list1 = data;
+        console.log(data);
+        this.xAxesLabels = [...new Set(this.list1.map(d=>d.dateOfPrice))] as string[];
+        const productnames4 = [...new Set(this.list1.map(d=>d.companyName))] as string[];
+        console.log(productnames4);
+        for(let p of productnames4){
+          const ds = {label: p, data: []};
+          ds.data = this.list1.filter(i=>i.companyName===p).map(j=>j.currentPrice);
+          this.dataSets.push(ds);
+        }
+
+        this.displayChart = true;
+        console.log(this.dataSets);
+      },err=>{
+        console.log(err);
+      });
     }
      
   }
